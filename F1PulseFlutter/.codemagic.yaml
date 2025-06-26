@@ -1,0 +1,20 @@
+workflows:
+  flutter-apk-build:
+    name: Build Flutter APK
+    environment:
+      flutter: stable
+      vars:
+        ANDROID_BUILD_TYPE: release
+    scripts:
+      - name: Get dependencies
+        script: |
+          flutter pub get
+      - name: Build APK
+        script: |
+          flutter build apk --release
+    artifacts:
+      - build/app/outputs/flutter-apk/app-release.apk
+    publishing:
+      email:
+        recipients:
+          - asddef01@gmail.com 
